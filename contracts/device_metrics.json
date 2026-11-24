@@ -1,0 +1,15 @@
+{
+  "name": "device_metrics",
+  "version": "1.0.0",
+  "owner": "network-telemetry-producer",
+  "description": "Per-device network telemetry samples (one row per device, metric and timestamp).",
+  "primary_key": ["device_id", "metric", "event_time"],
+  "fields": [
+    {"name": "device_id",  "type": "string",    "required": true},
+    {"name": "metric",     "type": "string",    "required": true,
+     "allowed": ["cpu_pct", "mem_pct", "latency_ms", "packet_loss_pct"]},
+    {"name": "value",      "type": "float",     "required": true, "min": 0},
+    {"name": "event_time", "type": "timestamp", "required": true},
+    {"name": "site",       "type": "string",    "required": false}
+  ]
+}

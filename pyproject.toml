@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dataops-reliable-pipeline"
+version = "1.0.0"
+description = "DataOps reference pipeline: data contracts, idempotent loads, data quality and alerting."
+authors = [{ name = "Maximiliano Falco" }]
+requires-python = ">=3.10"
+dependencies = []  # core runs on the standard library only
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+dataops-pipeline = "dataops_pipeline.pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
